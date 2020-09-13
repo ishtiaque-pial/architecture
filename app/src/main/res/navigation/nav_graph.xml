@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.structure.RegistrationFragment"
+        android:name="com.example.structure.ui.registration.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" />
 </navigation>

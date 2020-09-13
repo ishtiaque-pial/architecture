@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.structure.utils.Result
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 abstract class BaseViewModel  : ViewModel() {
 
@@ -15,8 +17,11 @@ abstract class BaseViewModel  : ViewModel() {
 
     fun executeSuspendedFunction(codeBlock: suspend () -> Result<Any>) {
         viewModelScope.launch {
-            _result.value = Result.InProgress
-            _result.value = codeBlock()
+            _result.value = Result.InProgress(true)
+            _result.value =withContext(Dispatchers.IO) {
+                 codeBlock()
+            }
+            _result.value = Result.InProgress(false)
         }
     }
 

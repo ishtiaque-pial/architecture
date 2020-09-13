@@ -31,9 +31,9 @@ class LoginFragment : Fragment() {
         bindingView = DataBindingUtil.inflate(inflater,
             R.layout.fragment_login, container, false)
         bindingView.viewModel = viewModel
+        viewModel.callApi()
         bindingView.btn.setOnClickListener {
-            viewModel.callApi()
-           //findNavController().navigate(R.id.action_loginFragment_to_registrationFragment2)
+           findNavController().navigate(R.id.action_loginFragment_to_registrationFragment2)
         }
 
         viewModel.result.observe(viewLifecycleOwner, Observer {
@@ -52,8 +52,12 @@ class LoginFragment : Fragment() {
                 is Result.UnknownError -> {
                     bindingView.btn.text = "UnknownError"
                 }
-                Result.InProgress -> {
-                    bindingView.btn.text = "InProgress"
+                is Result.InProgress -> {
+                    if (it.isLoading) {
+                        bindingView.btn.text = "InProgress"
+                    } else {
+                       // bindingView.btn.text = "Stop"
+                    }
                 }
             }
         })
