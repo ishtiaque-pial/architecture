@@ -35,8 +35,15 @@ class LoginFragment : Fragment() {
         bindingView.btn.setOnClickListener {
            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment2)
         }
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                Log.e("gjgjhgj","Start")
+            } else {
+                Log.e("gjgjhgj","Finish")
+            }
+        })
 
-        viewModel.result.observe(viewLifecycleOwner, Observer {
+        /*viewModel.result.observe(viewLifecycleOwner, Observer {
             when(it) {
                 is Result.Success -> {
                     if (it.data is LoginResponse) {
@@ -60,7 +67,7 @@ class LoginFragment : Fragment() {
                     }
                 }
             }
-        })
+        })*/
 
         return bindingView.root
     }
