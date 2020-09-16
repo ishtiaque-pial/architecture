@@ -8,19 +8,5 @@ import com.example.structure.utils.Result
 class RegistrationViewModel @ViewModelInject constructor(
     private val dataManager: DataManager
 ) : BaseViewModel() {
-    override fun onSucess(result: Any) {
 
-    }
-
-    override fun onApiError(result: Result.ApiError) {
-
-    }
-
-    override fun onNetworkError(result: Result.NetworkError) {
-
-    }
-
-    override fun onUnknownError(result: Result.UnknownError) {
-        
-    }
 }

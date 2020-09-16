@@ -14,20 +14,6 @@ class LoginFragmentViewModel @ViewModelInject constructor(
         executeSuspendedFunction { dataManager.apiHelper.getProfile() }
     }
 
-    override fun onSucess(result: Any) {
-        Log.e("gjgjhgj","ok")
-    }
 
-    override fun onApiError(result: Result.ApiError) {
-        Log.e("gjgjhgj","ApiError")
-    }
-
-    override fun onNetworkError(result: Result.NetworkError) {
-        Log.e("gjgjhgj","NetworkError")
-    }
-
-    override fun onUnknownError(result: Result.UnknownError) {
-       Log.e("gjgjhgj","UnknownError")
-    }
 
 }
