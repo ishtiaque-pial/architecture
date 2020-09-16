@@ -30,4 +30,12 @@ class LoginFragmentViewModel @ViewModelInject constructor(
        Log.e("gjgjhgj","UnknownError")
     }
 
+    override fun inProgress(result: Result.InProgress) {
+        if (result.isLoading) {
+            Log.e("gjgjhgj","Start")
+        } else {
+            Log.e("gjgjhgj","Finish")
+        }
+    }
+
 }

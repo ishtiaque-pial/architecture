@@ -35,39 +35,6 @@ class LoginFragment : Fragment() {
         bindingView.btn.setOnClickListener {
            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment2)
         }
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                Log.e("gjgjhgj","Start")
-            } else {
-                Log.e("gjgjhgj","Finish")
-            }
-        })
-
-        /*viewModel.result.observe(viewLifecycleOwner, Observer {
-            when(it) {
-                is Result.Success -> {
-                    if (it.data is LoginResponse) {
-                        bindingView.btn.text = it.data.name
-                    }
-                }
-                is Result.ApiError -> {
-                    bindingView.btn.text = "ApiError"
-                }
-                is Result.NetworkError -> {
-                    bindingView.btn.text = "NetworkError"
-                }
-                is Result.UnknownError -> {
-                    bindingView.btn.text = "UnknownError"
-                }
-                is Result.InProgress -> {
-                    if (it.isLoading) {
-                        bindingView.btn.text = "InProgress"
-                    } else {
-                       // bindingView.btn.text = "Stop"
-                    }
-                }
-            }
-        })*/
 
         return bindingView.root
     }

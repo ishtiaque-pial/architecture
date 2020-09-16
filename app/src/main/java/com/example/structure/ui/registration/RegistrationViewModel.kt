@@ -23,4 +23,8 @@ class RegistrationViewModel @ViewModelInject constructor(
     override fun onUnknownError(result: Result.UnknownError) {
         
     }
+
+    override fun inProgress(result: Result.InProgress) {
+
+    }
 }
