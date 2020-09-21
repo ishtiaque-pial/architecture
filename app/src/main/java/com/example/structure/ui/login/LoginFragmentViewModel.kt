@@ -11,7 +11,7 @@ class LoginFragmentViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
     fun callApi() {
-        executeSuspendedFunction { dataManager.apiHelper.getProfile() }
+        executeSuspendedFunction { dataManager.apiHelper.getProfile()}
     }
 
 

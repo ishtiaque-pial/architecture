@@ -37,7 +37,7 @@ class LoginFragment : BaseFragment() {
         return bindingView.root
     }
 
-    override fun getViewModel(): BaseViewModel =viewModel
+    override fun getViewModel(): BaseViewModel = viewModel
 
     override fun onSucess(result: Any) {
         if (result is LoginResponse) {
