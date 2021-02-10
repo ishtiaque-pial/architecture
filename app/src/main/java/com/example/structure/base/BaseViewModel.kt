@@ -1,5 +1,6 @@
 package com.example.structure.base
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,12 +13,9 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel(),IObserverCallBack {
 
     private val _result = MutableLiveData<Result<Any>>()
-    val result: LiveData<Result<Any>>
-        get() = _result
-
 
     fun executeSuspendedFunction(codeBlock: suspend () -> Flow<Result<Any>>) {
         viewModelScope.launch {
@@ -44,11 +42,27 @@ abstract class BaseViewModel : ViewModel() {
         }
     }
 
-    protected abstract fun onSucess(result: Any)
-    protected abstract fun onApiError(result: Result.ApiError)
-    protected abstract fun onNetworkError(result: Result.NetworkError)
-    protected abstract fun onUnknownError(result: Result.UnknownError)
-    protected abstract fun inProgress(result: Result.InProgress)
+    override fun onApiError(result: Result.ApiError) {
+        Log.e("gjgjhgj","ApiError")
+    }
 
+    override fun onNetworkError(result: Result.NetworkError) {
+        Log.e("gjgjhgj","NetworkError")
+    }
+
+    override fun onUnknownError(result: Result.UnknownError) {
+        Log.e("gjgjhgj","UnknownError")
+    }
+
+    override fun inProgress(result: Result.InProgress) {
+        if (result.isLoading) {
+            Log.e("gjgjhgj","Start")
+        } else {
+            Log.e("gjgjhgj","Finish")
+        }
+    }
+
+
+    protected abstract fun onSucess(result: Any)
 
 }
