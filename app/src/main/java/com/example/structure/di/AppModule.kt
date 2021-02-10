@@ -2,7 +2,6 @@ package com.example.structure.di
 
 import android.content.Context
 import androidx.annotation.NonNull
-import com.example.structure.data.DataManager
 import com.example.structure.data.Prefence.PreferencesHelper
 import com.example.structure.data.local.RoomHelper
 import com.example.structure.data.remote.ApiHelper
@@ -10,8 +9,8 @@ import com.example.structure.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,12 +20,15 @@ import javax.inject.Singleton
 
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(preferencesHelper: PreferencesHelper,httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkHttpClient(
+        preferencesHelper: PreferencesHelper,
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
