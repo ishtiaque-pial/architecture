@@ -18,7 +18,7 @@ class LoginFragmentViewModel @Inject constructor(
     }
 
     override fun onSucess(result: Any) {
-        Log.e("gjgjhgj","ok")
+        Log.e("ServerLogging","ok")
     }
 
 }

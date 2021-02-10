@@ -43,22 +43,22 @@ abstract class BaseViewModel : ViewModel(),IObserverCallBack {
     }
 
     override fun onApiError(result: Result.ApiError) {
-        Log.e("gjgjhgj","ApiError")
+        Log.e("ServerLogging","ApiError")
     }
 
     override fun onNetworkError(result: Result.NetworkError) {
-        Log.e("gjgjhgj","NetworkError")
+        Log.e("ServerLogging","NetworkError")
     }
 
     override fun onUnknownError(result: Result.UnknownError) {
-        Log.e("gjgjhgj","UnknownError")
+        Log.e("ServerLogging","UnknownError")
     }
 
     override fun inProgress(result: Result.InProgress) {
         if (result.isLoading) {
-            Log.e("gjgjhgj","Start")
+            Log.e("ServerLogging","Start")
         } else {
-            Log.e("gjgjhgj","Finish")
+            Log.e("ServerLogging","Finish")
         }
     }
 
